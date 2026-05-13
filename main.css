@@ -160,6 +160,10 @@ button {
 #view-container {
     flex: 1;
     position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    border: 1px solid var(--glass-border);
 }
 
 .view {
@@ -169,6 +173,20 @@ button {
     width: 100%;
     height: 100%;
     animation: fadeIn 0.4s ease forwards;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+#view-map {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('assets/wasteland_map_bg.png') center/cover no-repeat;
+}
+
+#view-lab {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('assets/gene_lab_bg.png') center/cover no-repeat;
+}
+
+#view-arena {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('assets/arena_bg.png') center/cover no-repeat;
 }
 
 .hidden {
@@ -176,19 +194,16 @@ button {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Map View */
 .scavenge-map {
     width: 100%;
     height: 60vh;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect width="100" height="100" fill="none" stroke="%23ffffff" stroke-width="1"/></svg>');
     position: relative;
     border-radius: 16px;
-    border: 1px solid var(--glass-border);
-    overflow: hidden;
 }
 
 .location-btn {
