@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muta-Brawl</title>
+    <meta name="description" content="Genetic manipulation, breeding, and betting on elemental and biological creatures.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header id="top-bar">
+            <h1 class="logo">MUTA-BRAWL</h1>
+            <div class="economy-display">
+                <span class="money-icon">💰</span>
+                <span id="player-money">1000</span>
+            </div>
+            <nav id="main-nav">
+                <button class="nav-btn" data-view="map">Scavenge</button>
+                <button class="nav-btn active" data-view="lab">Gene Lab</button>
+                <button class="nav-btn" data-view="arena">The Pit</button>
+            </nav>
+        </header>
+
+        <!-- Views Container -->
+        <main id="view-container">
+            <!-- Map View -->
+            <section id="view-map" class="view hidden">
+                <h2>Wasteland Scavenging</h2>
+                <div class="scavenge-map">
+                    <button class="location-btn" data-loc="toxic-swamp" style="top: 20%; left: 30%;">
+                        <div class="loc-name">Toxic Swamp</div>
+                        <div class="loc-desc">Acidic parts, venom traits</div>
+                    </button>
+                    <button class="location-btn" data-loc="volcanic-crater" style="top: 60%; left: 60%;">
+                        <div class="loc-name">Volcanic Crater</div>
+                        <div class="loc-desc">Obsidian plating, fire traits</div>
+                    </button>
+                    <button class="location-btn" data-loc="abandoned-facility" style="top: 30%; left: 70%;">
+                        <div class="loc-name">Abandoned Facility</div>
+                        <div class="loc-desc">Cybernetic scrap, unstable DNA</div>
+                    </button>
+                </div>
+                <div id="scavenge-results" class="glass-panel hidden">
+                    <h3>Scavenge Results</h3>
+                    <ul id="scavenge-loot-list"></ul>
+                    <button id="close-scavenge-btn" class="action-btn">Collect</button>
+                </div>
+            </section>
+
+            <!-- Gene Lab View -->
+            <section id="view-lab" class="view">
+                <h2>Gene Lab</h2>
+                <div class="lab-layout">
+                    <div class="roster-panel glass-panel">
+                        <h3>Your Roster</h3>
+                        <div id="creature-list">
+                            <!-- Creature cards injected here -->
+                        </div>
+                        <button id="breed-btn" class="action-btn secondary">Breed Selected (2)</button>
+                    </div>
+                    <div class="details-panel glass-panel">
+                        <h3>Creature Details</h3>
+                        <div id="creature-display">
+                            <canvas id="creature-canvas" width="300" height="300"></canvas>
+                        </div>
+                        <div id="creature-stats">
+                            <!-- Stats injected here -->
+                        </div>
+                        <div id="creature-parts">
+                            <!-- Parts injected here -->
+                        </div>
+                        <div class="lab-actions">
+                            <button id="heal-btn" class="action-btn">Heal ($50)</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Arena View -->
+            <section id="view-arena" class="view hidden">
+                <h2>The Underground Pit</h2>
+                <div class="arena-layout">
+                    <div class="betting-panel glass-panel">
+                        <h3>Upcoming Matches</h3>
+                        <div id="match-list">
+                            <!-- Matches injected here -->
+                        </div>
+                        <div id="betting-interface" class="hidden">
+                            <h4>Place Your Bet</h4>
+                            <div class="bet-sides">
+                                <button class="bet-btn" data-side="left" id="bet-left-btn">Left (2.0x)</button>
+                                <button class="bet-btn" data-side="right" id="bet-right-btn">Right (1.5x)</button>
+                            </div>
+                            <input type="number" id="bet-amount" value="100" min="10" step="10">
+                            <button id="confirm-bet-btn" class="action-btn">Confirm Bet</button>
+                        </div>
+                    </div>
+                    <div class="combat-display glass-panel">
+                        <div class="combat-hud">
+                            <div class="fighter-hud left">
+                                <div class="fighter-name" id="fighter-1-name">Fighter 1</div>
+                                <div class="hp-bar-container"><div class="hp-bar" id="fighter-1-hp"></div></div>
+                            </div>
+                            <div class="vs">VS</div>
+                            <div class="fighter-hud right">
+                                <div class="fighter-name" id="fighter-2-name">Fighter 2</div>
+                                <div class="hp-bar-container"><div class="hp-bar" id="fighter-2-hp"></div></div>
+                            </div>
+                        </div>
+                        <canvas id="combat-canvas" width="600" height="400"></canvas>
+                        <div id="combat-controls">
+                            <button id="coach-ability-btn" class="action-btn pulse-btn" disabled>Use Coach Ability (Adrenaline)</button>
+                        </div>
+                        <div id="combat-results" class="hidden">
+                            <h3 id="combat-winner-text">Winner!</h3>
+                            <p id="bet-result-text">You won $200</p>
+                            <button id="next-match-btn" class="action-btn">Next Match</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Notifications -->
+        <div id="notification-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="genetics.js"></script>
+    <script src="economy.js"></script>
+    <script src="combat.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
